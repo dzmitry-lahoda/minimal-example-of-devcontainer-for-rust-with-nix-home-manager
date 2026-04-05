@@ -1,5 +1,4 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
-ARG USERNAME=vscode
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
@@ -15,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir --parents /etc/nix/ && \
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.custom.conf && \
+    echo "allowed-users = *" >> /etc/nix/nix.custom.conf && \
     echo "trusted-users = root vscode actions-runner" >> /etc/nix/nix.custom.conf
 
 RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
@@ -25,6 +25,4 @@ RUN chmod +x /usr/local/bin/devcontainer.sh
 
 ENTRYPOINT ["/usr/local/bin/devcontainer.sh"]
 CMD ["sleep", "infinity"]
-
-USER ${USERNAME}
 WORKDIR /workspaces
