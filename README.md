@@ -1,0 +1,1 @@
+# minimal-example-of-devcontainer-for-rust-with-nix-home-manager
