@@ -12,7 +12,6 @@
     pkg-config
     openssl
     git
-    just
     fd
     ripgrep
     bacon
