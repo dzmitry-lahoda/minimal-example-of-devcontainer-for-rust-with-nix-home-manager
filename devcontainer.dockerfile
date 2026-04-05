@@ -20,5 +20,11 @@ RUN mkdir --parents /etc/nix/ && \
 RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
 sh -s -- install linux --init none --no-confirm
 
+COPY .devcontainer/devcontainer.sh /usr/local/bin/devcontainer.sh
+RUN chmod +x /usr/local/bin/devcontainer.sh
+
+ENTRYPOINT ["/usr/local/bin/devcontainer.sh"]
+CMD ["sleep", "infinity"]
+
 USER ${USERNAME}
 WORKDIR /workspaces
