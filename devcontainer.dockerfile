@@ -13,8 +13,9 @@ RUN apt-get update && apt-get install -y \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://install.determinate.systems/nix \
-    | sh -s -- install --no-confirm
+RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
+sh -s -- install linux --init none --no-confirm
+
 
 # RUN echo '. "$HOME/.nix-profile/etc/profile.d/nix.sh"' >> /home/${USERNAME}/.bashrc && \
 #     chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.bashrc
