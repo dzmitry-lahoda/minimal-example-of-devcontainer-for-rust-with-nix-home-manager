@@ -13,8 +13,11 @@
     openssl
     git
     fd
+    devcontainer
+    git-lfs
     ripgrep
     bacon
+    codex
   ];
 
   programs.bash.enable = true;
