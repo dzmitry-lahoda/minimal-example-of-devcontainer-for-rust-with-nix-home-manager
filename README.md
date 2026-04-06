@@ -1,10 +1,9 @@
-# Why?
+# summary
 
-devcontainer and dockerfile specifications and definitions
-are non composable ugly mess of hacks
-on top of degenerate cve enabled monolotic os.
+vscode only user setup with Determinat nix, 
+with home-manager applied and  rust setup from toolchain file,
+and with nix and codex extensions.
 
-thay why we use both at miminum, 
-and hide os behind lisp,
+# why
 
-to get clean remote dev setup
+minimum set of files to copy to your repo and get devcontainer with nix asap
