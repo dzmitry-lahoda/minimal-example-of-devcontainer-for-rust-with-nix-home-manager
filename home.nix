@@ -18,6 +18,7 @@
     ripgrep
     bacon
     codex
+    (pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
   ];
 
   programs.bash.enable = true;
