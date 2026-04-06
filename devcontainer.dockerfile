@@ -18,11 +18,10 @@ RUN mkdir --parents /etc/nix/ && \
     echo "trusted-users = root vscode actions-runner" >> /etc/nix/nix.custom.conf
 
 RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-sh -s -- install linux --init none --no-confirm
+    sh -s -- install linux --init none --no-confirm
 
-COPY .devcontainer/devcontainer.sh /usr/local/bin/devcontainer.sh
-RUN chmod +x /usr/local/bin/devcontainer.sh
-
-ENTRYPOINT ["/usr/local/bin/devcontainer.sh"]
-CMD ["sleep", "infinity"]
+RUN /nix/var/nix/profiles/default/bin/nix-daemon >/tmp/nix-daemon.log 2>&1 & \
+    su -c "nix run .#activate" vscode
+    
+USER vscode`
 WORKDIR /workspaces

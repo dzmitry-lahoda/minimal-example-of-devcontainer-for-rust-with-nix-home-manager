@@ -12,7 +12,16 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations.devcontainer =
+      packages = {
+       activate = pkgs.writeShellApplication {
+              name = "activate";
+              runtimeInputs = with pkgs; [ home-manager ];
+              text = '''
+                home-manager switch --flake . --extra-experimental-features nix-command --extra-experimental-features flakes
+              ''';
+            };
+    };
+      homeConfigurations.vscode =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];

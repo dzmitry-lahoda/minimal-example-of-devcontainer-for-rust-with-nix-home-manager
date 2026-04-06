@@ -5,7 +5,7 @@
     "context": ".."
   },
   "remoteUser": "vscode",
-  "overrideCommand": false,
+  // "overrideCommand": false,
   // "postCreateCommand": "home-manager switch -b backup --flake /workspaces/${localWorkspaceFolderBasename}/.devcontainer#devcontainer || home-manager switch -b backup -f /workspaces/${localWorkspaceFolderBasename}/home.nix",
   "customizations": {
     "vscode": {
